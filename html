@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Controle Financeiro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Minhas Finanças</h1>
+        </header>
+
+        <div id="telaInicial" class="tela ativa">
+            <div class="card-saldo">
+                <p class="label-saldo">Saldo Atual</p>
+                <h2 class="valor-saldo" id="saldoTotal">R$ 0,00</h2>
+            </div>
+
+            <div class="resumo">
+                <div class="resumo-item entrada">
+                    <span class="resumo-label">Entradas</span>
+                    <span class="resumo-valor" id="totalEntradas">R$ 0,00</span>
+                </div>
+                <div class="resumo-item saida">
+                    <span class="resumo-label">Saídas</span>
+                    <span class="resumo-valor" id="totalSaidas">R$ 0,00</span>
+                </div>
+            </div>
+
+            <div class="botoes-acoes">
+                <button class="btn btn-entrada" onclick="mostrarTela('telaEntrada')">
+                    <span class="btn-icon">+</span>
+                    Nova Entrada
+                </button>
+                <button class="btn btn-saida" onclick="mostrarTela('telaSaida')">
+                    <span class="btn-icon">-</span>
+                    Nova Saída
+                </button>
+            </div>
+
+            <div class="secao-movimentacoes">
+                <h3>Movimentações Recentes</h3>
+                <div id="listaMovimentacoes" class="lista-movimentacoes">
+                    <p class="lista-vazia">Nenhuma movimentação registrada</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="telaEntrada" class="tela">
+            <div class="cabecalho-tela">
+                <button class="btn-voltar" onclick="mostrarTela('telaInicial')">← Voltar</button>
+                <h2>Adicionar Entrada</h2>
+            </div>
+            
+            <form class="form-movimentacao" onsubmit="adicionarEntrada(event)">
+                <div class="campo">
+                    <label>Descrição</label>
+                    <input type="text" id="descricaoEntrada" placeholder="Ex: Salário, Freelance..." required>
+                </div>
+                
+                <div class="campo">
+                    <label>Valor</label>
+                    <div class="input-valor">
+                        <span class="cifrao">R$</span>
+                        <input type="number" id="valorEntrada" step="0.01" placeholder="0,00" required>
+                    </div>
+                </div>
+                
+                <div class="campo">
+                    <label>Data</label>
+                    <input type="date" id="dataEntrada" required>
+                </div>
+                
+                <button type="submit" class="btn btn-salvar">Salvar Entrada</button>
+            </form>
+        </div>
+
+        <div id="telaSaida" class="tela">
+            <div class="cabecalho-tela">
+                <button class="btn-voltar" onclick="mostrarTela('telaInicial')">← Voltar</button>
+                <h2>Adicionar Saída</h2>
+            </div>
+            
+            <form class="form-movimentacao" onsubmit="adicionarSaida(event)">
+                <div class="campo">
+                    <label>Descrição</label>
+                    <input type="text" id="descricaoSaida" placeholder="Ex: Aluguel, Mercado..." required>
+                </div>
+                
+                <div class="campo">
+                    <label>Valor</label>
+                    <div class="input-valor">
+                        <span class="cifrao">R$</span>
+                        <input type="number" id="valorSaida" step="0.01" placeholder="0,00" required>
+                    </div>
+                </div>
+                
+                <div class="campo">
+                    <label>Data</label>
+                    <input type="date" id="dataSaida" required>
+                </div>
+                
+                <button type="submit" class="btn btn-salvar">Salvar Saída</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
